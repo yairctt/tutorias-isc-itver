@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Programas de Asesoría ISC — TecNM">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <title>Programas de Asesoría — ISC TecNM</title>
+
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-eduwell-style.css">
+
+    <style>
+        /* ── Tarjeta de programa ── */
+        .prog-card {
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            margin-bottom: 50px;
+            transition: all .3s;
+        }
+
+        .prog-card:hover {
+            box-shadow: 0px 0px 25px rgba(27, 57, 106, 0.13);
+            transform: translateY(-3px);
+        }
+
+        .prog-card-header {
+            background: linear-gradient(-145deg, var(--tecnm-azul-profundo) 0%, var(--tecnm-azul-medio) 100%);
+            padding: 30px 35px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .prog-card-header .prog-siglas {
+            font-size: 36px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 10px 18px;
+            letter-spacing: 2px;
+        }
+
+        .prog-card-header h4 {
+            font-size: 18px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .prog-card-header span {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .prog-card-body {
+            padding: 30px 35px;
+        }
+
+        .prog-card-body p {
+            margin-bottom: 25px;
+        }
+
+        /* ── Lista de servicios dentro de la card ── */
+        .prog-lista {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 25px 0;
+        }
+
+        .prog-lista li {
+            font-size: 14px;
+            color: var(--tecnm-gris-texto);
+            line-height: 28px;
+            padding-left: 22px;
+            position: relative;
+        }
+
+        .prog-lista li::before {
+            content: '→';
+            color: var(--tecnm-azul-profundo);
+            font-weight: 700;
+            position: absolute;
+            left: 0;
+        }
+
+        /* ── Chip de área ── */
+        .prog-area {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background-color: var(--tecnm-gris-claro);
+            border-left: 4px solid var(--tecnm-azul-profundo);
+            border-radius: 0 8px 8px 0;
+            padding: 7px 14px;
+            margin-bottom: 20px;
+        }
+
+        .prog-area i {
+            color: var(--tecnm-azul-profundo);
+            font-size: 13px;
+        }
+
+        .prog-area span {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--tecnm-azul-profundo);
+        }
+
+        /* ── Divisor entre secciones de la card ── */
+        .prog-divider {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 20px 0;
+        }
+
+        .prog-subtitle {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #7a7a7a;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        /* ── Footer imagen ── */
+        .campus-footer {
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            max-height: 280px;
+        }
+
+        .campus-footer img {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 15px;
+            display: block;
+        }
+
+        .campus-footer-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(-145deg, rgba(27, 57, 106, 0.82) 0%, rgba(36, 81, 143, 0.68) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .campus-footer-overlay h4 {
+            font-size: 24px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .campus-footer-overlay p {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 767px) {
+            .prog-card-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .prog-card-header .prog-siglas {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <a href="index.html" class="logo">Tutorías ISC</a>
+                        <ul class="nav">
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="programa.html">Programas y recursos</a></li>
+                            <li><a href="programas-isc.html" class="active">Apoyos complementarios</a></li>
+                            <li><a href="constancias.html">Constancias</a></li>
+                            <li><a href="contact-us.html">Contacto</a></li>
+                        </ul>
+                        <a class="menu-trigger"><span>Menu</span></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ===== HEADER END ===== -->
+
+
+    <!-- ===== PAGE HEADING ===== -->
+    <section class="page-heading">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header-text">
+                        <h4>Coordinación de Tutorías ISC</h4>
+                        <h1>Programas de <em style="font-style:normal; color:#1B396A;">Asesoría</em></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== PAGE HEADING END ===== -->
+
+
+    <!-- ===== PROGRAMAS ===== -->
+    <section style="margin-top: 80px;">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="section-heading">
+                        <h6>Apoyos complementarios</h6>
+                        <h4>Programas de <em>Apoyo Estudiantil</em></h4>
+                        <p>El Instituto cuenta con programas de apoyo complementarios en diferentes areas,
+                            diseñados para acompañar al estudiante en su trayectoria
+                            académica.</p>
+                    </div>
+                </div>
+
+
+                <!-- ══════════════════════════════════
+             PAPAS
+        ══════════════════════════════════ -->
+                <div class="col-lg-12" id="papas">
+                    <div class="prog-card">
+                        <div class="prog-card-header">
+                            <span class="prog-siglas">PAPAS</span>
+                            <div>
+                                <h4>Programa de Asesorías Para Alumnos Por Alumnos</h4>
+                                <span>Asesoría entre pares — Ciencias Básicas</span>
+                            </div>
+                        </div>
+                        <div class="prog-card-body">
+
+                            <div class="prog-area">
+                                <i class="fa fa-flask"></i>
+                                <span>Área principal: Ciencias Básicas</span>
+                            </div>
+
+                            <p>Un programa donde estudiantes de semestres avanzados brindan asesoría a sus compañeros en
+                                materias de ciencias básicas del plan de estudios. Aprende de quienes ya pasaron por lo
+                                mismo, en un ambiente cercano y de confianza.</p>
+
+                            <hr class="prog-divider">
+
+                            <p class="prog-subtitle">¿Qué materias cubre?</p>
+                            <ul class="prog-lista">
+                                <li>Cálculo Diferencial e Integral</li>
+                                <li>Álgebra Básica y Lineal</li>
+                                <li>Probabilidad y Estadística</li>
+                                <li>Dinámica y Estática</li>
+                                <li>Otras materias del área de ciencias básicas</li>
+                            </ul>
+
+                            <hr class="prog-divider">
+
+                            <p class="prog-subtitle">¿Cómo funciona?</p>
+                            <ul class="prog-lista">
+                                <li>Estudiantes de semestres avanzados seleccionados por rendimiento académico</li>
+                                <li>Sesiones individuales o grupales según la necesidad del alumno</li>
+                                <li>Horarios flexibles acordados entre el alumno y el asesor</li>
+                                <li>Sin costo — disponible para todos los estudiantes de ISC</li>
+                            </ul>
+
+                            <hr class="prog-divider">
+
+                            <div class="main-button-gradient">
+                                <a href="https://www.facebook.com/profile.php?id=100093559012627">Solicitar asesoría
+                                    PAPAS</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ══════════════════════════════════
+             PARSIS
+        ══════════════════════════════════ -->
+                <div class="col-lg-12" id="parsis">
+                    <div class="prog-card">
+                        <div class="prog-card-header">
+                            <span class="prog-siglas">PARSIS</span>
+                            <div>
+                                <h4>Programa de Asesorías y Refuerzo en Sistemas</h4>
+                                <span>Asesoría entre pares — Área de Sistemas</span>
+                            </div>
+                        </div>
+                        <div class="prog-card-body">
+
+                            <div class="prog-area">
+                                <i class="fa fa-desktop"></i>
+                                <span>Área principal: Ingeniería en Sistemas Computacionales</span>
+                            </div>
+
+                            <p>Programa de asesoría entre pares enfocado en las materias del área de sistemas. Sesiones
+                                con estudiantes destacados para fortalecer los conocimientos
+                                específicos de la carrera.</p>
+
+                            <hr class="prog-divider">
+
+                            <p class="prog-subtitle">¿Qué materias cubre?</p>
+                            <ul class="prog-lista">
+                                <li>Fundamentos de Programación y Programación Orientada a Objetos</li>
+                                <li>Fundamentos de BD, Taller de BD y Admon. de BD</li>
+                                <li>Lenguajes y Autómatas I</li>
+                            </ul>
+
+                            <hr class="prog-divider">
+
+                            <p class="prog-subtitle">¿Cómo funciona?</p>
+                            <ul class="prog-lista">
+                                <li>Asesorias entre pares</li>
+                                <li>Material de apoyo y ejercicios prácticos incluidos</li>
+                                <li>Seguimiento del avance del estudiante por parte del asesor</li>
+                                <li>Asesorías de calidad</li>
+                            </ul>
+
+                            <hr class="prog-divider">
+
+                            <div class="main-button-gradient">
+                                <a
+                                    href="https://teams.microsoft.com/l/chat/0/0?users=coordinacion_parsis@veracruz.tecnm.mx">Solicitar
+                                    asesoría PARSIS</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- ══════════════════════════════════
+             C.A.P.A
+        ══════════════════════════════════ -->
+                <div class="col-lg-12" id="capa">
+                    <div class="prog-card">
+                        <div class="prog-card-header">
+                            <span class="prog-siglas">C.A.P.A</span>
+                            <div>
+                                <h4>Centro de Atención Psicopedagógica para Alumnos</h4>
+                                <span>Orientación y herramientas especializadas</span>
+                            </div>
+                        </div>
+                        <div class="prog-card-body">
+
+                            <div class="prog-area">
+                                <i class="fa fa-heart"></i>
+                                <span>Área principal: Bienestar y Desarrollo Estudiantil</span>
+                            </div>
+
+                            <p>El C.A.P.A ofrece herramientas y orientación especializada para ayudar a los estudiantes
+                                a superar desafíos académicos, personales y emocionales que puedan afectar su desempeño
+                                durante la carrera.</p>
+
+                            <hr class="prog-divider">
+
+                            <p class="prog-subtitle">¿Qué ofrece?</p>
+                            <ul class="prog-lista">
+                                <li>Orientación psicopedagógica personalizada</li>
+                                <li>Herramientas para superar dificultades de aprendizaje</li>
+                                <li>Apoyo en gestión emocional y manejo del estrés académico</li>
+                                <li>Estrategias para mejorar hábitos de estudio y concentración</li>
+                                <li>Acompañamiento en situaciones de crisis académica o personal</li>
+                            </ul>
+
+                            <hr class="prog-divider">
+
+                            <p class="prog-subtitle">¿A quién va dirigido?</p>
+                            <ul class="prog-lista">
+                                <li>Estudiantes con dificultades de aprendizaje o bajo rendimiento</li>
+                                <li>Alumnos en riesgo de deserción o reprobación</li>
+                                <li>Estudiantes que buscan orientación vocacional o personal</li>
+                                <li>Cualquier alumno que requiera apoyo especializado</li>
+                            </ul>
+
+                            <hr class="prog-divider">
+
+                            <div class="main-button-gradient">
+                                <a href="index.html#contacto">Solicitar atención C.A.P.A</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ===== PROGRAMAS END ===== -->
+
+    <!-- ===== CTA APOYO ===== -->
+    <section style="margin-top: 60px; margin-bottom: 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div
+                        style="background: linear-gradient(-145deg, var(--tecnm-azul-profundo) 0%, var(--tecnm-azul-medio) 100%); border-radius: 15px; padding: 50px 40px; text-align: center;">
+                        <i class="fa fa-graduation-cap"
+                            style="font-size: 52px; color: rgba(255,255,255,0.20); display: block; margin-bottom: 18px;"></i>
+                        <h3 style="font-size: 26px; font-weight: 900; color: #fff; margin-bottom: 12px;">¿Necesitas
+                            apoyo académico?</h3>
+                        <p
+                            style="color: rgba(255,255,255,0.80); font-size: 15px; max-width: 540px; margin: 0 auto 28px auto;">
+                            Contáctanos y te orientamos hacia el programa que mejor se adapte a tus necesidades — ya sea
+                            asesoría en ciencias básicas, refuerzo en sistemas o apoyo psicopedagógico.</p>
+                        <div class="main-button-gradient" style="display: inline-block;">
+                            <a href="contact-us.html">Contactar coordinación</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===== CTA END ===== -->
+
+    <!-- Scripts -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <script>
+        $('.header-area').css({ 'position': 'fixed', 'top': '0', 'left': '0', 'right': '0' });
+
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop() > 10) {
+                $('.header-area').addClass('background-header');
+            } else {
+                $('.header-area').removeClass('background-header');
+            }
+        });
+
+        if ($(window).scrollTop() > 10) {
+            $('.header-area').addClass('background-header');
+        }
+
+        $('.menu-trigger').on('click', function () {
+            $(this).toggleClass('active');
+            var nav = $('.header-area .main-nav .nav');
+            if (nav.is(':visible')) { nav.hide(); } else { nav.show(); }
+        });
+    </script>
+
+</body>
+
+</html>
