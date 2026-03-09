@@ -9,9 +9,7 @@
   El HTML se genera automáticamente.
 
   Campos de cada tutor:
-    - nombre   : string — nombre completo con grado (ej. "Dr. Juan Pérez López")
-    - grado    : string — descripción del grado académico
-    - grupo    : string — grupo o grupos asignados (ej. "Grupo A")
+    - nombre   : string — nombre completo 
     - tutoria  : 1 | 2  — a qué etapa pertenece
 */
 
