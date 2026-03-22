@@ -312,8 +312,8 @@ section {
 
 .section-heading h4 {
   margin-top: 10px;
-  line-height: 40px;
-  font-size: 28px;
+  line-height: 1.2;
+  font-size: clamp(1.4rem, 5vw, 1.75rem);
   font-weight: 900;
   text-transform: capitalize;
   color: #111;
@@ -755,10 +755,10 @@ section.main-banner {
   position: relative;
   z-index: 2;
   margin-top: 20px;
-  font-size: 64px;
+  font-size: clamp(2rem, 8vw, 4rem);
   color: #111111;
   font-weight: 900;
-  line-height: 74px;
+  line-height: 1.1;
   margin-bottom: 40px;
 }
 
@@ -997,10 +997,10 @@ section.simple-cta h6 {
 }
 
 section.simple-cta h4 {
-  font-size: 62px;
+  font-size: clamp(1.8rem, 8vw, 3.8rem);
   font-weight: 900;
   color: #fff;
-  line-height: 74px;
+  line-height: 1.1;
   margin-top: 20px;
 }
 
@@ -1289,7 +1289,7 @@ section.page-heading .header-text h4 {
 }
 
 section.page-heading .header-text h1 {
-  font-size: 62px;
+  font-size: clamp(1.8rem, 8vw, 3.8rem);
   font-weight: 900;
   color: #111;
   margin-top: 10px;
@@ -2257,6 +2257,8 @@ section.constancia {
   padding: 80px 40px;
   text-align: center;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+  max-width: 100%;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
@@ -2289,7 +2291,7 @@ section.constancia {
 }
 
 .constancia-box h4 {
-  font-size: 28px;
+  font-size: clamp(1.3rem, 5vw, 1.75rem);
   font-weight: 900;
   color: #1B396A;
   margin-bottom: 20px;
@@ -3383,10 +3385,12 @@ Fix overflow de texto en móvil
   }
 
   body,
-  .container,
-  .row {
+  .container {
     overflow-x: hidden;
-    max-width: 100%;
+  }
+
+  .row {
+    overflow: visible;
   }
 
   img,
@@ -3404,7 +3408,8 @@ Fix overflow de texto en móvil
   border-radius: 15px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.06);
   overflow: hidden;
-  margin-bottom: 30px;
+  margin: 0 auto 30px auto;
+  max-width: 100%;
 }
 
 .form-constancia-header {
