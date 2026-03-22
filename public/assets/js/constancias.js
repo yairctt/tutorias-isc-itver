@@ -1,20 +1,3 @@
-// ── Header sticky ──────────────────────────────────────────
-$('.header-area').css({ position: 'fixed', top: '0', left: '0', right: '0' });
-
-$(window).on('scroll', function () {
-    $(window).scrollTop() > 10
-        ? $('.header-area').addClass('background-header')
-        : $('.header-area').removeClass('background-header');
-});
-
-if ($(window).scrollTop() > 10) $('.header-area').addClass('background-header');
-
-$('.menu-trigger').on('click', function () {
-    $(this).toggleClass('active');
-    var nav = $('.header-area .main-nav .nav');
-    nav.is(':visible') ? nav.hide() : nav.show();
-});
-
 
 // ── Formulario de constancias ──────────────────────────────
 

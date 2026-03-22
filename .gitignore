@@ -11,3 +11,5 @@ node_modules/
 # Store de rate limit (solo desarrollo)
 .rate-limit-store.json
 
+.vercel
+.env*.local

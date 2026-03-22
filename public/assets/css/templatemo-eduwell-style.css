@@ -3620,20 +3620,72 @@ Fix overflow de texto en móvil
 }
 
 @media (max-width: 767px) {
+  .section-heading {
+    text-align: center !important;
+  }
+
+  .constancia-note {
+    display: table;
+    margin: 0 auto 25px auto;
+    text-align: center;
+    border-radius: 8px;
+    border-left: none;
+    border-top: 3px solid #1B396A;
+  }
+
   .form-constancia-header {
     flex-direction: column;
     text-align: center;
   }
 
+  .form-constancia-body {
+    text-align: center;
+  }
+
   .input-control-wrap {
     flex-direction: column;
+    align-items: center;
+  }
+
+  .input-nocontrol {
+    width: 100%;
   }
 
   .btn-solicitar {
     width: 100%;
     justify-content: center;
   }
+
+  .validacion-hint {
+    text-align: center;
+  }
+
+  .correo-preview {
+    justify-content: center;
+  }
+
+  .info-card {
+    text-align: center;
+  }
+
+  .info-card .card-icon {
+    margin: 0 auto 20px auto;
+  }
+
+  .info-card ul li {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .info-card ul li::before {
+    display: none;
+  }
+
+  .constancia-box {
+    padding: 60px 20px;
+  }
 }
+
 
 /* ── Utility Classes ── */
 .tecnm-accent {
