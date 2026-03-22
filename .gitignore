@@ -1,0 +1,13 @@
+# Dependencias
+node_modules/
+
+# Variables de entorno
+.env
+.env.local
+
+# Vercel
+.vercel/
+
+# Store de rate limit (solo desarrollo)
+.rate-limit-store.json
+

@@ -1,0 +1,18 @@
+{
+  "name": "tutorias-isc-api",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "API serverless para el sistema de constancias de tutorías ISC — TecNM Veracruz",
+
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.600.0",
+    "resend": "^3.2.0"
+  },
+  "devDependencies": {
+    "vercel": "^34.0.0"
+  }
+}
