@@ -15,13 +15,6 @@
         { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
       ]
     }
-  ],
-  "env": {
-    "R2_ACCOUNT_ID":        "@r2_account_id",
-    "R2_ACCESS_KEY_ID":     "@r2_access_key_id",
-    "R2_SECRET_ACCESS_KEY": "@r2_secret_access_key",
-    "R2_BUCKET_NAME":       "@r2_bucket_name",
-    "RESEND_API_KEY":       "@resend_api_key",
-    "EMAIL_FROM":           "@email_from"
-  }
+  ]
 }
+
