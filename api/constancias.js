@@ -5,15 +5,14 @@
  * Método:  POST
  * Body:    { noControl: "23020095" }
  *
- * Capas de seguridad (lib/rateLimit.js):
+ * Capas de seguridad:
  *   1. Delay artificial de 1.5 s en toda petición
  *   2. Rate limit por IP: máx 10 req / 15 min
  *   3. Cooldown por número de control: 1 solicitud / 24 horas
  *   4. Límite de NCs distintos por IP: máx 2 / 24 horas
- *
- * Seguridad adicional:
  *   5. CORS restringido al dominio oficial
- *   6. IP real via x-vercel-forwarded-for (no falsificable)
+ *   6. IP real via x-vercel-forwarded-for
+ *   7. Body size limit: 1kb
  */
 
 import { existeConstancia, getPdfBuffer } from '../lib/r2.js';
@@ -21,11 +20,13 @@ import { enviarConstancia, toCorreo } from '../lib/mail.js';
 import { applyRateLimit } from '../lib/ratelimit.js';
 
 const RE_NO_CONTROL = /^\d{8}$/;
-const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? '*';
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? 'https://tutorias-isc-itver-sooty.vercel.app';
 
 export const config = {
   api: {
-    bodyParser: true,
+    bodyParser: {
+      sizeLimit: '1kb',
+    },
   },
 };
 
@@ -90,6 +91,11 @@ export default async function handler(req, res) {
     const existe = await existeConstancia(nc);
 
     if (!existe) {
+      console.log(JSON.stringify({
+        event: 'constancia_no_encontrada',
+        nc,
+        timestamp: new Date().toISOString(),
+      }));
       return res.status(404).json({
         ok: false,
         message: `No se encontró una constancia para el número de control ${nc}. Verifica que hayas acreditado el programa de tutorías.`,
@@ -99,11 +105,22 @@ export default async function handler(req, res) {
     const pdfBuffer = await getPdfBuffer(nc);
     await enviarConstancia(nc, pdfBuffer);
 
-    console.log(`[constancias] OK → ${toCorreo(nc)}`);
+    console.log(JSON.stringify({
+      event: 'constancia_enviada',
+      nc,
+      correo: toCorreo(nc),
+      timestamp: new Date().toISOString(),
+    }));
+
     return res.status(200).json({ ok: true });
 
   } catch (err) {
-    console.error('[constancias] Error interno:', err);
+    console.error(JSON.stringify({
+      event: 'error_interno',
+      nc,
+      mensaje: err.message,
+      timestamp: new Date().toISOString(),
+    }));
     return res.status(500).json({
       ok: false,
       message: 'Ocurrió un error interno. Intenta de nuevo más tarde.',
