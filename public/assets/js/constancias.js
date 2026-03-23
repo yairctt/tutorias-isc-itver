@@ -1,4 +1,3 @@
-
 // ── Formulario de constancias ──────────────────────────────
 
 var input = document.getElementById('inputNoControl');
@@ -128,11 +127,7 @@ btn.addEventListener('click', async function () {
 
         // ── 429: límite diario alcanzado ──────────────────
         if (response.status === 429) {
-            var matchH = data.message && data.message.match(/(\d+)\s*hora/);
-            var matchS = data.message && data.message.match(/(\d+)\s*segundo/);
-            var secs = matchH ? parseInt(matchH[1], 10) * 3600
-                : matchS ? parseInt(matchS[1], 10)
-                    : 86400;   // 24 h por defecto
+            var retryAfter = parseInt(response.headers.get('Retry-After'), 10) || 86400;
 
             mostrarMensaje(
                 'warn',
@@ -141,7 +136,7 @@ btn.addEventListener('click', async function () {
                 data.message || 'Ya solicitaste tu constancia hoy. Vuelve mañana.'
             );
             setLoadingState(false);
-            startCooldown(secs);
+            startCooldown(retryAfter);
             return;
         }
 
@@ -159,12 +154,13 @@ btn.addEventListener('click', async function () {
             preview.classList.add('hidden');
             hint.textContent = '8 dígitos numéricos — Ej: 23020095';
             hint.classList.remove('hint-error');
+            startCooldown(86400); // bloquea el botón 24h visualmente
 
             // ── 404 / error de negocio ────────────────────────
         } else {
             var motivo = (data && data.message)
                 ? data.message
-                : 'No se encontraron constancias for este número de control.';
+                : 'No se encontraron constancias para este número de control.';
             mostrarMensaje(
                 'error',
                 'fa-times-circle',
@@ -190,6 +186,7 @@ btn.addEventListener('click', async function () {
 
 function setLoadingState(loading) {
     btn.disabled = loading;
+    input.disabled = loading;
     if (loading) {
         btnIcon.className = 'fa fa-circle-o-notch fa-spin-anim';
         btnTexto.textContent = 'Enviando…';
