@@ -36,13 +36,6 @@ const PROGRAMA_T2 = [
 /* ── Recursos Tutoría I ──────────────────────────── */
 const RECURSOS_T1 = [
   {
-    nombre: "Cuaderno de Trabajo — Tutoría I",
-    desc: "Actividades y ejercicios de la primera etapa",
-    pdf: "assets/pdf/cuaderno_tutoria_1.pdf",
-    tipo: "pdf",
-    verBtn: true,
-  },
-  {
     nombre: "Anexo 6 — Ficha de Identificación",
     desc: "Datos generales del alumno tutorado",
     pdf: "assets/pdf/t1/anexo-6-ficha-identificacion-2026.pdf",
@@ -139,13 +132,6 @@ const RECURSOS_T1 = [
 /* ── Recursos Tutoría II ─────────────────────────── */
 const RECURSOS_T2 = [
   {
-    nombre: "Cuaderno de Trabajo — Tutoría II",
-    desc: "Actividades y ejercicios de la segunda etapa",
-    pdf: "assets/pdf/cuaderno_tutoria_2.pdf",
-    tipo: "pdf",
-    verBtn: true,
-  },
-  {
     nombre: "Anexo 16 — Evaluación del Programa de Tutorías",
     desc: "Evaluación al finalizar el programa",
     pdf: "assets/pdf/t2/anexo-16-evaluacion-programa-tutorias-2026.pdf",
@@ -182,6 +168,13 @@ const RECURSOS_EXTRA = [
     nombre: "Manual del Tutor",
     desc: "Guía oficial para el docente tutor asignado",
     pdf: "assets/pdf/manual_tutor.pdf",
+    tipo: "pdf",
+    verBtn: true,
+  },
+  {
+    nombre: "Cuaderno de Trabajo de Tutoria",
+    desc: "Cuaderno de trabajo para el tutorado",
+    pdf: "assets/pdf/cuaderno_tutorado.pdf",
     tipo: "pdf",
     verBtn: true,
   },
