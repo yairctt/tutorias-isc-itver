@@ -8,7 +8,12 @@
  * Capas de seguridad (lib/rateLimit.js):
  *   1. Delay artificial de 1.5 s en toda petición
  *   2. Rate limit por IP: máx 10 req / 15 min
- *   3. Cooldown por número de control: 1 solicitud / 60 s
+ *   3. Cooldown por número de control: 1 solicitud / 24 horas
+ *   4. Límite de NCs distintos por IP: máx 2 / 24 horas
+ *
+ * Seguridad adicional:
+ *   5. CORS restringido al dominio oficial
+ *   6. IP real via x-vercel-forwarded-for (no falsificable)
  */
 
 import { existeConstancia, getPdfBuffer } from '../lib/r2.js';
@@ -16,6 +21,7 @@ import { enviarConstancia, toCorreo } from '../lib/mail.js';
 import { applyRateLimit } from '../lib/ratelimit.js';
 
 const RE_NO_CONTROL = /^\d{8}$/;
+const ALLOWED_ORIGIN = process.env.ALLOWED_ORIGIN ?? '*';
 
 export const config = {
   api: {
@@ -24,6 +30,11 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+
+  /* ── CORS ── */
+  res.setHeader('Access-Control-Allow-Origin', ALLOWED_ORIGIN);
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   /* ── CORS preflight ── */
   if (req.method === 'OPTIONS') {
