@@ -337,11 +337,11 @@ header
 --------------------------------------------- 
 */
 
-/* Fuerza sin transicion en el header y todos sus hijos */
+/* Fuerza sin transicion en el header y todos sus hijos (excepto menu-trigger para animar) */
 .header-area,
-.header-area *,
+.header-area *:not(.menu-trigger):not(.menu-trigger span),
 .background-header,
-.background-header * {
+.background-header *:not(.menu-trigger):not(.menu-trigger span) {
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -ms-transition: none !important;
@@ -532,12 +532,13 @@ header
   width: 30px;
   height: 2px;
   left: 0;
+  transition: all .3s ease;
 }
 
 .header-area .main-nav .menu-trigger span:before,
 .header-area .main-nav .menu-trigger span:after {
   content: "";
-  width: 75%;
+  width: 100%;
 }
 
 .header-area .main-nav .menu-trigger span {
