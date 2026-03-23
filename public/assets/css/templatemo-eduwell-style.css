@@ -251,6 +251,8 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   transition: all .3s;
+  position: relative;
+  z-index: 2;
 }
 
 .main-button-gradient a:hover {
@@ -599,7 +601,7 @@ header
 
 @media (max-width: 767px) {
   .header-area .main-nav .logo {
-    color: #1e1e1e;
+    color: #fff;
   }
 
   .header-area.header-sticky .nav li a:hover,
@@ -846,7 +848,7 @@ section.our-courses:before {
   top: -140px;
   width: 291px;
   height: 231px;
-  z-index: 1;
+  z-index: -1; pointer-events: none;
 }
 
 section.our-courses:after {
@@ -857,7 +859,7 @@ section.our-courses:after {
   top: -140px;
   width: 291px;
   height: 231px;
-  z-index: 1;
+  z-index: -1; pointer-events: none;
 }
 
 section.our-courses .naccs {
@@ -1028,7 +1030,7 @@ section.testimonials:before {
   top: -140px;
   width: 593px;
   height: 352px;
-  z-index: 1;
+  z-index: -1; pointer-events: none;
 }
 
 section.testimonials:after {
@@ -1039,7 +1041,7 @@ section.testimonials:after {
   bottom: -140px;
   width: 632px;
   height: 352px;
-  z-index: 1;
+  z-index: -1; pointer-events: none;
 }
 
 .testimonials .item {
@@ -3673,17 +3675,23 @@ Fix overflow de texto en móvil
     text-align: center;
   }
 
+  .info-card ul {
+    text-align: left;
+    display: table;
+    margin: 0 auto;
+  }
+
   .info-card .card-icon {
     margin: 0 auto 20px auto;
   }
 
   .info-card ul li {
-    padding-left: 0;
-    text-align: center;
+    padding-left: 22px;
+    text-align: left;
   }
 
   .info-card ul li::before {
-    display: none;
+    display: block;
   }
 
   .constancia-box {
